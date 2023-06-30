@@ -75,12 +75,12 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-		{% endblock %}
+{% endblock %}
 
-		{% block content %}
-		{% endblock %}
+{% block content %}
+{% endblock %}
 
-		{% block footer %}
+{% block footer %}
     <footer class="ftco-footer ftco-section">
       <div class="container">
       	<div class="row">
@@ -177,9 +177,10 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{% static 'store/js/google-map.js'%}"></script>
   <script src="{% static 'store/js/main.js'%}"></script>
-  {% endblock %}
-  {% block scripts %}
-  {% endblock %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
     
   </body>
 </html>
