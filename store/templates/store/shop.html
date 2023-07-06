@@ -18,11 +18,11 @@
     		<div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
-    					<li><a href="#" class="active">All</a></li>
-    					<li><a href="#">Vegetables</a></li>
-    					<li><a href="#">Fruits</a></li>
-    					<li><a href="#">Juice</a></li>
-    					<li><a href="#">Dried</a></li>
+    					<!-- <li><a href="#" class="active">All</a></li> -->
+						<li><a href="{% url 'store:shop' %}" class="active">All</a></li>
+						{% for category in categories %}
+    					<li><a href="{% url 'store:category' category.id %}" class="active">{{category.name}}</a></li>
+						{% endfor %}
     				</ul>
     			</div>
     		</div>
@@ -47,19 +47,19 @@
 									{% endif %}
 		    					</div>
 	    					</div>
-	    					<div class="bottom-area d-flex px-3">
-	    						<div class="m-auto d-flex">
-	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-	    								<span><i class="ion-ios-menu"></i></span>
-	    							</a>
-	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-	    								<span><i class="ion-ios-cart"></i></span>
-	    							</a>
-	    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-	    								<span><i class="ion-ios-heart"></i></span>
-	    							</a>
-    							</div>
-    						</div>
+							<div class="bottom-area d-flex px-3">
+								<div class="m-auto d-flex">
+									<!-- <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+										<span><i class="ion-ios-menu"></i></span>
+									</a> -->
+									<a href="{% url 'store:add_cart' 'cart' product.id %}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+										<span><i class="ion-ios-cart"></i></span>
+									</a>
+									<a href="{% url 'store:add_wishlist' 'wishlist' product.id %}" class="heart d-flex justify-content-center align-items-center ">
+										<span><i class="ion-ios-heart"></i></span>
+									</a>
+								</div>
+							</div>
     					</div>
     				</div>
     			</div>

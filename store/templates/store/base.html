@@ -3,7 +3,7 @@
 <html lang="en">
 {% block header %}
   <head>
-    <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Vegefoods - Lomov's student project</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -59,7 +59,8 @@
 	        <ul class="navbar-nav ml-auto">
               	<li class="nav-item"><a class="nav-link" href="{% url 'store:shop' %}">Shop</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'store:cart' %}">Cart</a></li>
-	          <li class="nav-item cta cta-colored"><a href="{% url 'store:cart' %}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'store:wishlist' %}">WishList</a></li>
+	          <!-- <li class="nav-item cta cta-colored"><a href="{% url 'store:cart' %}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li> -->
                 {% if request.user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link">{{request.user.username}}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'login:logout'%}">Logout</a></li>
@@ -77,8 +78,8 @@
     <!-- END nav -->
 {% endblock %}
 
-{% block content %}
-{% endblock %}
+		{% block content %}
+		{% endblock %}
 
 {% block footer %}
     <footer class="ftco-footer ftco-section">
