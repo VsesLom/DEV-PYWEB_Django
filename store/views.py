@@ -123,7 +123,8 @@ class ShopView(View):
             price_after=price_with_discount
         ).values('id', 'name', 'image', 'price_before', 'price_after', 'discount_value')
 
-        return render(request, 'store/shop.html', context={'data': products, 'categories': category_items})
+        return render(request, 'store/shop.html', context={'data': products, 'categories': category_items,
+                                                           'is_login': request.user.is_authenticated})
 
 
 class WishListView(View):
