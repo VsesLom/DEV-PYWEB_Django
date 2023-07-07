@@ -13,7 +13,7 @@ app_name = 'store'
 
 urlpatterns = [
     path('', ShopView.as_view(), name='shop'),
-    path('category/<int:id>/', ShopView.as_view(), name='category'),
+    path('category-<int:id>/', ShopView.as_view(), name='category'),
     path('product/<int:id>/', ProductSingleView.as_view(), name='product'),
     path('cart/', CartView.as_view(), name='cart'),
     path('<str:section>/add/<int:id>/', add_product, name='add_cart'),
