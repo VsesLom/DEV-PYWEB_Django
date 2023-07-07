@@ -48,7 +48,7 @@
 	    					</div>
 							<div class="bottom-area d-flex px-3">
 								<div class="m-auto d-flex">
-								{% if is_login %}
+								{% if request.user.is_authenticated %}
 									<!-- <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 										<span><i class="ion-ios-menu"></i></span>
 									</a> -->
