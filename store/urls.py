@@ -16,9 +16,9 @@ urlpatterns = [
     path('category-<int:id>/', ShopView.as_view(), name='category'),
     path('product/<int:id>/', ProductSingleView.as_view(), name='product'),
     path('cart/', CartView.as_view(), name='cart'),
-    path('<str:section>/add/<int:id>/', add_product, name='add_cart'),
-    path('<str:section>/delete/<int:id>/', delete_product, name='delete_cart'),
+    path('<str:section>/add-<int:id>/', add_product, name='add_cart'),
+    path('<str:section>/delete-<int:id>/', delete_product, name='delete_cart'),
     path('wishlist/', WishListView.as_view(), name='wishlist'),
-    path('<str:section>/add/<int:id>/', add_product, name='add_wishlist'),
-    path('<str:section>/delete/<int:id>/', delete_product, name='delete_wishlist'),
+    path('<str:section>/add-<int:id>/', add_product, name='add_wishlist'),
+    path('<str:section>/delete-<int:id>/', delete_product, name='delete_wishlist'),
 ]
