@@ -85,6 +85,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
+    'test': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'test_db.sqlite3',
+    },
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
     #     'NAME': os.getenv('NAME_PGDB'),
@@ -92,11 +96,7 @@ DATABASES = {
     #     'PASSWORD': os.getenv('PASSWORD_PGDB'),
     #     'HOST': os.getenv('HOST_PGDB'),
     #     'PORT': os.getenv('PORT_PGDB'),
-    # }
-    'test': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'test_db.sqlite3',
-    }
+    # },
 }
 
 
@@ -135,7 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-if 'localhost' in ALLOWED_HOSTS:
+if 'localhost:8000' in ALLOWED_HOSTS:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
