@@ -193,6 +193,7 @@ def delete_product(request, section, id):
             case 'wishlist':
                 tab = WishList
         del_prod = tab.objects.filter(user_id=request.user.id, product_id=id)
-        del_prod.delete()
+        if del_prod:
+            del_prod.delete()
         return redirect('store:' + section)
     return redirect('login:login')
