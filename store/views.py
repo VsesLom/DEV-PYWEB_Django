@@ -159,35 +159,40 @@ class ProductSingleView(View):
 
 
 def add_product(request, section, id, number=0):
-    match section:
-        case 'cart':
-            tab = Cart
-        case 'wishlist':
-            tab = WishList
-    add_prod = tab.objects.filter(user_id=request.user.id, product_id=id)
-    if add_prod and section == 'cart':
-        add_prod = add_prod[0]
-        if number:
-            add_prod.quantity += number
-        else:
-            add_prod.quantity += 1
-        add_prod.save()
-    if not add_prod:
-        add_prod = tab()
-        add_prod.user = request.user
-        add_prod.product = Product.objects.get(id=id)
-        if number and section == 'cart':
-            add_prod.quantity = number
-        add_prod.save()
+    # для перенаправления неавторизованных юзеров на store:shop при вводе команды на добавление продукта вручную
+    if request.user.is_authenticated:
+        match section:
+            case 'cart':
+                tab = Cart
+            case 'wishlist':
+                tab = WishList
+        add_prod = tab.objects.filter(user_id=request.user.id, product_id=id)
+        if add_prod and section == 'cart':
+            add_prod = add_prod[0]
+            if number:
+                add_prod.quantity += number
+            else:
+                add_prod.quantity += 1
+            add_prod.save()
+        if not add_prod:
+            add_prod = tab()
+            add_prod.user = request.user
+            add_prod.product = Product.objects.get(id=id)
+            if number and section == 'cart':
+                add_prod.quantity = number
+            add_prod.save()
     return redirect('store:shop')
 
 
 def delete_product(request, section, id):
-    match section:
-        case 'cart':
-            tab = Cart
-        case 'wishlist':
-            tab = WishList
-    del_prod = tab.objects.filter(user_id=request.user.id, product_id=id)
-    del_prod.delete()
-    return redirect('store:' + section)
+    # для перенаправления неавторизованных юзеров на login:login при вводе команды на удаление продукта вручную
+    if request.user.is_authenticated:
+        match section:
+            case 'cart':
+                tab = Cart
+            case 'wishlist':
+                tab = WishList
+        del_prod = tab.objects.filter(user_id=request.user.id, product_id=id)
+        del_prod.delete()
+        return redirect('store:' + section)
+    return redirect('login:login')
