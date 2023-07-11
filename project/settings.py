@@ -135,7 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-if 'localhost:8000' in ALLOWED_HOSTS:
+if '127.0.0.1:8000' in ALLOWED_HOSTS:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
